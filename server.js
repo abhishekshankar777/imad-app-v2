@@ -4,13 +4,86 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articles= {
+     articleOne: {
+    title: 'article one | abhishek shankar',
+    heading: 'article one',
+    date: 'sept 5 2017',
+    content: `<p>
+                abhishek shankar is batman.
+            </p>
+            <p>
+                abhishek shankar is batman.
+            </p>`
+},
+     articletwo : {
+        title: 'article two| abhishek shankar',
+        heading: 'article two',
+        date: 'sept 5 1988',
+        content: `<p>
+                bruce wayne is batman.
+            </p>
+            <p>
+                bruce wayne is batman.
+            </p>`
+        
+    },
+     articlethree: {
+        title: 'article three| abhishek shankar',
+        heading: 'article three',
+        date: 'sept 5 1947',
+        content: `<p>
+                bruce wayne is batman.
+            </p>
+            <p>
+                bruce wayne is batman.
+            </p>`
+        
+    },
+};
+function createTemplate (data) {
+  var tittle = 'data.title';
+  var heading = 'data.heading';
+  var date = 'data.date';
+  var content ='data.content';
+
+var htmltemplate= `<html>
+    <head>
+        <title>
+            ${title}
+        </title>
+        <meta name="viewport" content="width-device-width,initial-scale-1"/>
+        <link href="/ui/style.css" rel="stylesheet" />
+       
+    </head>
+    <body>
+        <div class="container">
+        <div>
+            <a href="/">home</a>
+        </div>
+        <hr/>
+        <h3>
+            ${heading}
+        </h3>
+        <div>
+            sept 5 2017
+        </div>
+        <div>
+        ${content}
+        </div>
+        </div>
+    </body>
+    </html>
+`;
+return htmlTemplate;
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   });
 
 app.get('/article-one', function(req, res) {
- res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+ res.send(createTemplate(articleone));
   });
   
 app.get('/article-two', function(req, res) {
