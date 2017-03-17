@@ -97,7 +97,7 @@ app.get('/', function (req, res) {
               res.status(500).send(err.toString());
               
           } else {
-              res.send(JSON.stringify(result));
+              res.send(JSON.stringify(result.rows));
               
           }
       });
@@ -112,9 +112,21 @@ app.get('/counter', function(req, res) {
     counter= counter+1;
     res.send(counter.toString());
 });
-app.get('/:articlename', function(req, res) {
-    var articlename= req.param.articlename;
- res.send(createTemplate(articles[articlename]));
+app.get('/articles/:articlename', function(req, res) {
+    
+    pool.query("SELECT * FROM article WHERE title = "+ req.params.articlename,function(err,result) {
+        if(err) {
+            res.status(500).send(err.toString());
+            
+        } else {
+            if(result.rows.length === o){
+                res.status(404).send('article not found');
+            } else {
+                var articleData = result.rows[0];
+                 res.send(createTemplate(articleData));
+            }
+        }
+    });
   });
   
 
