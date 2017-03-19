@@ -6,7 +6,7 @@ var Pool = require('pg').Pool;
 var config = {
     user: 'abhishekshankar777',
     database: 'abhishekshankar777',
-    host:'db.imad.hasura.io',
+    host:'db.imad.hasura-app.io',
     port: '5432',
     password: 'db-abhishekshankar777-84933'
 };
@@ -117,8 +117,7 @@ app.get('/articles/:articlename', function(req, res) {
     pool.query("SELECT * FROM article WHERE title =  '" + req.params.articleName + "'",function(err,result) {
         if(err) {
             res.status(500).send(err.toString());
-            
-        } else {
+            } else {
             if(result.rows.length === 0){
                 res.status(404).send('article not found');
             } else {
