@@ -59,7 +59,7 @@ var htmltemplate= `
 <html>
     <head>
         <title>
-            ${title}
+            ${article-one}
         </title>
         <meta name="viewport" content="width-device-width,initial-scale-1"/>
         <link href="/ui/style.css" rel="stylesheet" />
@@ -85,7 +85,7 @@ var htmltemplate= `
     </html>
 `;
 return htmlTemplate;
-
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
