@@ -106,6 +106,21 @@ app.get('/', function (req, res) {
       
   });
   
+   var pool = new Pool(config);
+  app.get('/abhishek-db',function (req, res) {
+      pool.query('SELECT * FROM abhishek',function(err,result){
+          if(err) {
+              res.status(500).send(err.toString());
+              
+          } else {
+              res.send(JSON.stringify(result));
+              
+          }
+      });
+      
+      
+  });
+  
   
   
 var counter=0;
@@ -130,23 +145,7 @@ app.get('/articles/article-one',function(req,res)  {
     
     });
     });
-    app.get('abhishek',function(req,res)  {
-    pool.query("SELECT * FROM 'abhishek' WHERE title= '", + req.params.abhishekName+ "'", function(err,result){
-        if (err) {
-            res.status(500).send(err.toString());
-        } else {
-            if(result.rows.length === 0) {
-                res.status(404).send('name not foud');
-            } else {
-                var abhishekData = result.rows[0];
-                res.send(createTemplate(abhishekData));
-            }
-        }
     
-    });
-    });
-  
-  
 
   
 app.get('/ui/style.css', function (req, res) {
