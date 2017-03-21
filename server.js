@@ -113,6 +113,8 @@ app.get('/counter', function(req, res) {
     counter= counter+1;
     res.send(counter.toString());
 });
+
+
 app.get('/articles/article-one',function(req,res)  {
     pool.query("SELECT * FROM 'article' WHERE title= '", + req.params.articleName+ "'", function(err,result){
         if (err) {
@@ -128,6 +130,22 @@ app.get('/articles/article-one',function(req,res)  {
     
     });
     });
+    app.get('abhishek',function(req,res)  {
+    pool.query("SELECT * FROM 'abhishek' WHERE title= '", + req.params.abhishekName+ "'", function(err,result){
+        if (err) {
+            res.status(500).send(err.toString());
+        } else {
+            if(result.rows.length === 0) {
+                res.status(404).send('name not foud');
+            } else {
+                var abhishekData = result.rows[0];
+                res.send(createTemplate(abhishekData));
+            }
+        }
+    
+    });
+    });
+  
   
 
   
