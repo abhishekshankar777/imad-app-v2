@@ -133,7 +133,7 @@ app.get('/', function (req, res) {
       var password = req.body.password;
      
       
-      pool.query('SELECT * from "user" username= $1',[username],function (err,result){
+      pool.query('SELECT * from "user" WHERE username= $1',[username],function (err,result){
           if(err) {
               res.status(500).send(err.toString());
               
