@@ -4,6 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
+
 var config = {
     user: 'abhishekshankar777',
     database: 'abhishekshankar777',
@@ -13,7 +14,7 @@ var config = {
 };
 var app = express();
 app.use(morgan('combined'));
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 var articles= {
      'article-one': {
     title: 'article one | abhishek shankar',
