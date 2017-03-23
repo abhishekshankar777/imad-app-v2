@@ -20,43 +20,7 @@ app.use(session({
     secret: 'someRandomSecretValue',
     cookie: {MaxAge: 1000 * 60 * 60 * 24 * 30}
 }));
-var articles= {
-     'article-one': {
-    title: 'article one | abhishek shankar',
-    heading: 'article one',
-    date: 'sept 5 2017',
-    content: `<p>
-                abhishek shankar is batman.
-            </p>
-            <p>
-                abhishek shankar is batman.
-            </p>`
-},
-     'article-two' : {
-        title: 'article two| abhishek shankar',
-        heading: 'article two',
-        date: 'sept 5 1988',
-        content: `<p>
-                bruce wayne is batman.
-            </p>
-            <p>
-                bruce wayne is batman.
-            </p>`
-        
-    },
-     'article-three': {
-        title: 'article three| abhishek shankar',
-        heading: 'article three',
-        date: 'sept 5 1947',
-        content: `<p>
-                bruce wayne is batman.
-            </p>
-            <p>
-                bruce wayne is batman.
-            </p>`
-        
-    },
-};
+
 function createTemplate (data) {
   var title = 'data.title';
   var heading = 'data.heading';
